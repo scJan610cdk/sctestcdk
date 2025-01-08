@@ -23,7 +23,7 @@ jobs: # multi jobs to perform steps
       run: | 
         cd sc-ec2vpc-d3
         npm install 
-        npm install aws-cdk 
+        npm install -g aws-cdk 
 
     - name: complie code 
       run: |
