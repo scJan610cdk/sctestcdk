@@ -21,11 +21,11 @@ jobs: # multi jobs to perform steps
 
     - name: install dependecies
       run: | 
-        cd sc-ec2vpc-day33
+        cd sc-ec2vpc-d3
         npm install 
         npm install aws-cdk 
 
     - name: complie code 
       run: |
-        cd sc-ec2vpc-day33
+        cd sc-ec2vpc-d3
         cdk synth 
