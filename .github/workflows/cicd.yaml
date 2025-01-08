@@ -36,6 +36,5 @@ jobs: # multi jobs to perform steps
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.REGION }}
       run: |
-        cd sc-ec2vpc-3
+        cd sc-ec2vpc-d3
         cdk deploy --require-approval never 
-                                                              
