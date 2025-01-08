@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-// import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import { scEc2VpcD3Stack } from '../lib/sc-ec2vpc-d3-stack';
 
 const app = new cdk.App();

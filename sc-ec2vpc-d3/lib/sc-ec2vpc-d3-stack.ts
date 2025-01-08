@@ -25,12 +25,12 @@ export class scEc2VpcD3Stack extends cdk.Stack {
     });
   }
   // print 
-  new cdk.CfnOutput(this,'scIID',{
-      description: 'this will print instance id',
-      value: scvm.instanceId,
-  });
-  new cdk.CfnOutput(this,'scIN',{
-      description: 'print IN',  
-      value: scvm.instancePublicDnsName
-  });
+  //  new cdk.CfnOutput(this,'scIID',{
+  //     description: 'this will print instance id',
+  //    value: scvm.instanceId,
+  //});
+  //new cdk.CfnOutput(this,'scIN',{
+  //   description: 'print IN',  
+  //    value: scvm.instancePublicDnsName
+  // });
 }

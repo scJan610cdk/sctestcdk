@@ -1,0 +1,20 @@
+name: Deploy stack on aws
+on: 
+  push:
+    branches:
+      - main  # when every any code to pushed to main
+
+jobs: # multi jobs to perform steps
+  deply:
+    runs-on: ubuntu-latest # from azure pool
+    steps: # steps to setup cdk and run code
+    - name: setup node.js 20 version
+      uses: actions/setup-node@v3
+      with: 
+        node-version: '20'
+
+    - name: checkout git repo code to vm 
+      uses: actions/checkout@v2 
+
+    - name: verify code in vm 
+      run: ls 
