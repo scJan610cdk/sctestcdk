@@ -18,3 +18,14 @@ jobs: # multi jobs to perform steps
 
     - name: verify code in vm 
       run: ls 
+
+    - name: install dependecies
+      run: | 
+        cd sc-ec2vpc-day33
+        npm install 
+        npm install aws-cdk 
+
+    - name: complie code 
+      run: |
+        cd sc-ec2vpc-day33
+        cdk synth 
