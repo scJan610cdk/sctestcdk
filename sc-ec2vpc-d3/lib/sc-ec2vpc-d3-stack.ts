@@ -23,14 +23,14 @@ export class scEc2VpcD3Stack extends cdk.Stack {
         instanceName: 'sc-linux-vm'
  // above name of my linux machine 
     });
+    // print   instance id 
+    new cdk.CfnOutput(this,'scInstanceID',{
+     description: 'this will print instance id',
+     value: scvm.instanceId,
+    });
+   // printing public dns 
+    new cdk.CfnOutput(this,'scvmpublicdns',{
+       value: scvm.instancePublicDnsName
+    });
   }
-  // print 
-  // new cdk.CfnOutput(this,'scIID',{
-  //     description: 'this will print instance id',
-  //    value: scvm.instanceId,
-  // });
-  // new cdk.CfnOutput(this,'scIN',{
-  //   description: 'print IN',  
-  //    value: scvm.instancePublicDnsName
-  // });
 }
