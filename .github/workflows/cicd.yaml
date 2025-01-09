@@ -5,8 +5,9 @@ on:
       - main  # when every any code to pushed to main
 
 jobs: # multi jobs to perform steps
-  deply:
+  ec2-deploy:
     runs-on: ubuntu-latest # from azure pool
+    needs: s3-deploy
     steps: # steps to setup cdk and run code
     - name: setup node.js 20 version
       uses: actions/setup-node@v3
@@ -39,7 +40,7 @@ jobs: # multi jobs to perform steps
         cd sc-bestway-d4
         cdk deploy Scec2allD4Stack --require-approval never
 
-  deply:
+  s3-deploy:
     runs-on: ubuntu-latest # from azure pool
     steps: # steps to setup cdk and run code
     - name: setup node.js 20 version
