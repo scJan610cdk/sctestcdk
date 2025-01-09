@@ -39,7 +39,6 @@ jobs: # multi jobs to perform steps
         cd sc-bestway-d4
         cdk deploy Scec2allD4Stack --require-approval never
 
-jobs: # multi jobs to perform steps
   deply:
     runs-on: ubuntu-latest # from azure pool
     steps: # steps to setup cdk and run code
