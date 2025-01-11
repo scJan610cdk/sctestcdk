@@ -1,0 +1,44 @@
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
+import time
+import boto3
+// import * as sqs from 'aws-cdk-lib/aws-sqs';
+
+export class Scd5Project1Stack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+   // lambda function
+
+  const rule = new events.Rule(this, 'Rule', {
+    schedule: events.Schedule.rate(cdk.Duration.minutes(3)),
+  });
+
+    const scd5Function = new lambda.Function(this, 'scd5-function', {
+      runtime: lambda.Runtime.PYTHON_3_8,
+      functionName: 'scd5-function', //manually added
+      code: lambda.Code.fromInline(`
+
+    def handler(event, context):
+    s3 = boto3.client('s3')
+    response = s3.list_buckets()
+    buckets = [bucket['Name'] for bucket in response['Buckets']]
+    print("S3 Buckets:", buckets)
+    return {"statusCode": 200, "body": buckets}
+    `),
+      handler: 'index.handler',
+    });
+
+    // Grant the Lambda function permissions to access S3 buckets
+    const s3policy = new cdk.aws_iam.PolicyStatement({
+      actions: ['s3:listAllmyBuckets'],
+      resources: ['*'],
+    });
+
+  rule.addTarget(new targets.LambdaFunction(scd5Function));
+    
+  }
+}
